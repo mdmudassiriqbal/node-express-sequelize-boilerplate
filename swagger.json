@@ -1,0 +1,136 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "1.0.0",
+		"title": "Rest API",
+		"description": "My projects",
+		"license": {
+			"name": "MIT",
+			"url": "https://opensource.org/licenses/MIT"
+		}
+	},
+	"basePath": "/",
+	"tags": [
+		{
+			"name": "My project",
+			"description": "API for the system"
+		}
+	],
+	"schemes": ["http", "https"],
+	"consumes": ["application/json"],
+	"produces": ["application/json"],
+	"paths": {
+		"/info": {
+			"get": {
+				"tags": ["info"],
+				"summary": "app information",
+				"responses": {
+					"200": {
+						"description": "get app information",
+						"schema": {
+							"$ref": "#/definitions/info"
+						}
+					}
+				}
+			}
+		},
+		"/api/login": {
+			"post": {
+				"tags": ["login"],
+				"summary": "User login",
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"description": "User that we want to login",
+						"schema": {
+							"$ref": "#/definitions/login"
+						}
+					}
+				],
+				"produces": ["application/json"],
+				"responses": {
+					"200": {
+						"description": "User login successfully",
+						"schema": {
+							"$ref": "#/definitions/loginResponse"
+						}
+					},
+					"401": {
+						"description": "You enter a incorrect password"
+					}
+				}
+			}
+		},
+		"/api/signup": {
+			"post": {
+				"tags": ["signup"],
+				"summary": "User signup",
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"description": "User that we want to login",
+						"schema": {
+							"$ref": "#/definitions/signup"
+						}
+					}
+				],
+				"produces": ["application/json"],
+				"responses": {
+					"200": {
+						"description": "You have sucessfully singup"
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"info": {
+			"properties": {
+				"verion": {
+					"type": "string",
+					"example": "1.0.0"
+				}
+			}
+		},
+		"login": {
+			"properties": {
+				"email": {
+					"type": "string"
+				},
+				"password": {
+					"type": "string"
+				}
+			}
+		},
+		"loginResponse": {
+			"required": ["email", "password"],
+			"properties": {
+				"user": {
+					"type": "object"
+				},
+				"token": {
+					"type": "string"
+				}
+			}
+		},
+		"signup": {
+			"required": ["name", "email", "password", "password_confirmation"],
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"email": {
+					"type": "string"
+				},
+				"password": {
+					"type": "string"
+				},
+				"password_confirmation": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}

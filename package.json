@@ -1,0 +1,57 @@
+{
+	"name": "your-app-name",
+	"author": "Mudassir Iqbal",
+	"version": "1.0.0",
+	"description": "Rest API",
+	"main": "server.js",
+	"scripts": {
+		"dev": "nodemon server.js",
+		"start-prod": " pm2 startOrRestart ecosystem.config.js --env production",
+		"prepare": "husky install"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/"
+	},
+	"bugs": {
+		"url": "https://github.com/"
+	},
+	"homepage": "https://github.com/",
+	"license": "ISC",
+	"dependencies": {
+		"aws-sdk": "^2.881.0",
+		"bcrypt": "^5.0.0",
+		"body-parser": "^1.19.0",
+		"cors": "^2.8.5",
+		"crypto-js": "^4.0.0",
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
+		"express-formidable": "^1.2.0",
+		"husky": "6.0.0",
+		"joi": "^17.4.0",
+		"jsonwebtoken": "^8.5.1",
+		"nodemailer": "^6.4.17",
+		"pg": "^8.5.1",
+		"sequelize": "^6.5.0",
+		"swagger-ui-express": "^4.1.6",
+		"uuid": "^8.3.2"
+	},
+	"devDependencies": {
+		"lint-staged": "^10.5.3",
+		"prettier": "^2.2.1"
+	},
+	"lint-staged": {
+		"*.+(js|jsx|json|jsonc|html|css|scss|md)": [
+			"prettier --write"
+		]
+	},
+	"prettier": {
+		"printWidth": 100,
+		"bracketSpacing": true,
+		"trailingComma": "es5",
+		"arrowParens": "avoid",
+		"packageManager": "yarn",
+		"singleQuote": true,
+		"useTabs": true
+	}
+}
